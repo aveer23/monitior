@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Punjab Agro Performance Dashboard</title>
+    <style>
+        body { font-family: Arial; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; }
+        .high { background-color: #c8f7c5; }
+        .low { background-color: #f7c5c5; }
+    </style>
+</head>
+<body>
+
+<h2>Employee Performance Dashboard</h2>
+
+<form method="POST" action="/add">
+    Name: <input type="text" name="name" required>
+    Tasks Assigned: <input type="number" name="tasks" required>
+    Tasks Completed: <input type="number" name="completed" required>
+    <button type="submit">Add</button>
+</form>
+
+<br>
+
+<table>
+<tr>
+    <th>Name</th>
+    <th>Tasks</th>
+    <th>Completed</th>
+    <th>Score (%)</th>
+</tr>
+
+{% for row in data %}
+<tr class="{{ 'high' if row[4] > 75 else 'low' }}">
+    <td>{{ row[1] }}</td>
+    <td>{{ row[2] }}</td>
+    <td>{{ row[3] }}</td>
+    <td>{{ row[4] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
